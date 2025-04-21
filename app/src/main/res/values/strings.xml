@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">mobile</string>
+    <string name="subject_name">INF 311 - Programação para Dispositivos Móveis</string>
+    <string name="student_name">Erick Soares de Souza - 108191</string>
     <string name="value1_text">Valor 1:</string>
     <string name="value2_text">Valor 2:</string>
     <string name="hint_value_text">Digite um número...</string>
