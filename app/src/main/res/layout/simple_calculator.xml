@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_alignStart="@+id/value1"
+        android:text="@string/value1_text"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/value1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="30dp"
+        android:hint="@string/hint_value_text"
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        tools:ignore="LabelFor"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/value2"
+        android:layout_below="@+id/value1"
+        android:layout_marginTop="30dp"
+        android:text="@string/value2_text"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/value2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="30dp"
+        android:hint="@string/hint_value_text"
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        tools:ignore="LabelFor"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/value2"
+        android:layout_alignStart="@+id/value2"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/add_text"
+        android:onClick="clickButtonAdd"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/value2"
+        android:layout_alignTop="@+id/buttonAdd"
+        android:layout_alignEnd="@+id/value2"
+        android:layout_marginEnd="30dp"
+        android:text="@string/min_text"
+        android:onClick="clickButtonMin"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonMul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonAdd"
+        android:layout_alignStart="@+id/buttonAdd"
+        android:layout_marginTop="30dp"
+        android:text="@string/mul_text"
+        android:onClick="clickButtonMul"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonDiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonMin"
+        android:layout_alignTop="@+id/buttonMul"
+        android:layout_alignStart="@+id/buttonMin"
+        android:text="@string/div_text"
+        android:onClick="clickButtonDiv"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonMul"
+        android:layout_marginTop="100dp"
+        android:text="@string/result_text"
+        android:textSize="24sp" />
+
+</RelativeLayout>

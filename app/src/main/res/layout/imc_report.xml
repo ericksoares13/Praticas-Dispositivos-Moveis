@@ -1,0 +1,168 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:padding="40dp"
+    android:rowCount="8">
+
+    <TextView
+        android:id="@+id/aux"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:text="@string/text_report"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_marginBottom="20dp"
+        android:text="@string/text_name"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nameValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_marginBottom="20dp"
+        android:text="@string/text_age"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ageValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_marginBottom="20dp"
+        android:text="@string/text_weight"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/weightValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_marginBottom="20dp"
+        android:text="@string/text_height"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/heightValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/imc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_marginBottom="20dp"
+        android:text="@string/text_imc"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/imcValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/classification"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:text="@string/text_classification"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/classificationValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_row="6"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_marginStart="20dp"
+        android:textSize="22sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="7"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:onClick="newCalculation"
+        android:text="@string/text_new_calculation"
+        android:textSize="22sp" />
+</GridLayout>

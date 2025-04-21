@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/line1"
+        android:layout_alignEnd="@id/line1"
+        android:layout_marginTop="100dp"
+        android:text="@string/text_name"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/nameValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignStart="@id/line1"
+        android:layout_alignEnd="@id/line1"
+        android:layout_centerHorizontal="true"
+        android:autofillHints="name"
+        android:hint="@string/text_name_hint"
+        android:inputType="text"
+        tools:ignore="LabelFor" />
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameValue"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="15dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/text_age"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/ageValue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="age"
+                android:hint="@string/text_age_hint"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/text_weight"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/weightValue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="weight"
+                android:hint="@string/text_weight_hint"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/text_height"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/heightValue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="height"
+                android:hint="@string/text_height_hint"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:onClick="generateReport"
+        android:text="@string/text_report"
+        android:textSize="22sp" />
+</RelativeLayout>
