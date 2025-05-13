@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mobile</string>
+    <string name="app_name">INF 311 - Erick</string>
     <string name="subject_name">INF 311 - Programação para Dispositivos Móveis</string>
     <string name="student_name">Erick Soares de Souza - 108191</string>
     <string name="value1_text">Valor 1:</string>
@@ -37,4 +37,7 @@
     <string name="text_imc">IMC (Kg/m²):</string>
     <string name="text_classification">Classificação:</string>
     <string name="text_new_calculation">Realizar novo Cálculo</string>
+    <string name="text_ipatinga">Ipatinga</string>
+    <string name="text_vicosa">Viçosa</string>
+    <string name="text_dpi">DPI</string>
 </resources>

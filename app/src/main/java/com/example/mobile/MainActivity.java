@@ -8,6 +8,7 @@ import android.widget.SimpleExpandableListAdapter;
 
 import com.example.mobile.projects.calculator.CompleteCalculator;
 import com.example.mobile.projects.calculator.SimpleCalculator;
+import com.example.mobile.projects.geolocation.Geolocation;
 import com.example.mobile.projects.imc.IMCCalculator;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class MainActivity extends Activity {
 
         this.fillWithCalculatorProject(groupList, childList);
         this.fillWithIMCProject(groupList, childList);
+        this.fillWithGeolocationProject(groupList, childList);
 
         return new SimpleExpandableListAdapter(
                 this,
@@ -82,6 +84,20 @@ public class MainActivity extends Activity {
         childList.add(children);
     }
 
+    private void fillWithGeolocationProject(final List<Map<String, String>> groupList, final List<List<Map<String, String>>> childList) {
+        final Map<String, String> group = new HashMap<>();
+        group.put(PRACTICE, "Prática 3");
+        groupList.add(group);
+
+        final List<Map<String, String>> children = new ArrayList<>();
+
+        final Map<String, String> child1 = new HashMap<>();
+        child1.put(ITEM, "Localização Geográfica");
+        children.add(child1);
+
+        childList.add(children);
+    }
+
     private void manageListClick(final ExpandableListView expandableListView) {
         expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
 
@@ -93,6 +109,8 @@ public class MainActivity extends Activity {
                 }
             } else if (groupPosition == 1 && childPosition == 0) {
                 startActivity(new Intent(MainActivity.this, IMCCalculator.class));
+            } else if (groupPosition == 2 && childPosition == 0) {
+                startActivity(new Intent(MainActivity.this, Geolocation.class));
             }
 
             return true;
