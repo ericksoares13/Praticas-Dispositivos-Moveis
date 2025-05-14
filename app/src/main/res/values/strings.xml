@@ -40,4 +40,5 @@
     <string name="text_ipatinga">Ipatinga</string>
     <string name="text_vicosa">Viçosa</string>
     <string name="text_dpi">DPI</string>
+    <string name="text_locale">Localização</string>
 </resources>
