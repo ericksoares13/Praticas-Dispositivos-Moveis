@@ -1,6 +1,7 @@
 package com.example.mobile.projects.geolocation;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -31,13 +34,27 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class GeolocationView extends AppCompatActivity implements OnMapReadyCallback {
 
-    private static final String REQUESTING_LOCATION_UPDATES_KEY = "requestingLocationUpdates";
-    private static final int FINE_PERMISSION_CODE = 1;
-
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationCallback locationCallback;
     private LocationRequest locationRequest;
     private boolean requestingLocationUpdates;
+    @SuppressLint("MissingPermission")
+    final ActivityResultLauncher<String[]> requestPermissionsLauncher = this.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+        final Boolean fineGranted = result.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false);
+        final Boolean coarseGranted = result.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false);
+
+        if (Boolean.TRUE.equals(fineGranted) || Boolean.TRUE.equals(coarseGranted)) {
+            this.requestingLocationUpdates = true;
+            this.fusedLocationProviderClient.requestLocationUpdates(this.locationRequest,
+                    this.locationCallback,
+                    Looper.getMainLooper());
+        }
+
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION) &&
+                !ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            Toast.makeText(this.getBaseContext(), "A localização é necessária para essa funcionalidade, ative nas configurações", Toast.LENGTH_SHORT).show();
+        }
+    });
 
     private Location currentLocation;
     private Marker currentMaker;
@@ -68,9 +85,13 @@ public class GeolocationView extends AppCompatActivity implements OnMapReadyCall
                 GeolocationView.this.currentLocation = locationResult.getLastLocation();
             }
         };
+    }
 
-        this.requestingLocationUpdates = false;
-        this.updateValuesFromBundle(savedInstanceState);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        this.requestingLocationUpdates = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
     @Override
@@ -87,35 +108,25 @@ public class GeolocationView extends AppCompatActivity implements OnMapReadyCall
         this.fusedLocationProviderClient.removeLocationUpdates(this.locationCallback);
     }
 
-    @Override
-    protected void onSaveInstanceState(final Bundle outState) {
-        outState.putBoolean(REQUESTING_LOCATION_UPDATES_KEY,
-                this.requestingLocationUpdates);
-        super.onSaveInstanceState(outState);
-    }
-
-    private void updateValuesFromBundle(final Bundle savedInstanceState) {
-        if (savedInstanceState == null) {
-            return;
-        }
-
-        if (savedInstanceState.keySet().contains(REQUESTING_LOCATION_UPDATES_KEY)) {
-            this.requestingLocationUpdates = savedInstanceState.getBoolean(
-                    REQUESTING_LOCATION_UPDATES_KEY);
-        }
-    }
-
     private void startLocationUpdates() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            this.requestingLocationUpdates = true;
+            this.fusedLocationProviderClient.requestLocationUpdates(this.locationRequest,
+                    this.locationCallback,
+                    Looper.getMainLooper());
             return;
         }
 
-        this.requestingLocationUpdates = true;
-        this.fusedLocationProviderClient.requestLocationUpdates(this.locationRequest,
-                this.locationCallback,
-                Looper.getMainLooper());
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION) ||
+                ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            Toast.makeText(this.getBaseContext(), "A localização é necessária para essa funcionalidade", Toast.LENGTH_SHORT).show();
+        }
+
+        this.requestPermissionsLauncher.launch(new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        });
     }
 
     @Override
