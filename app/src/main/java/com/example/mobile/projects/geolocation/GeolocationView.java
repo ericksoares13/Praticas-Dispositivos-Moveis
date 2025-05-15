@@ -3,6 +3,7 @@ package com.example.mobile.projects.geolocation;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
@@ -17,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.mobile.R;
+import com.example.mobile.database.DataBase;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -50,6 +52,7 @@ public class GeolocationView extends AppCompatActivity implements OnMapReadyCall
             this.fusedLocationProviderClient.requestLocationUpdates(this.locationRequest,
                     this.locationCallback,
                     Looper.getMainLooper());
+            return;
         }
 
         if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION) &&
@@ -198,16 +201,32 @@ public class GeolocationView extends AppCompatActivity implements OnMapReadyCall
     }
 
     public enum ViewType {
-        HOMETOWN("Minha casa na cidade natal", new LatLng(-19.4619317, -42.5872633)),
-        CITY("Minha casa em Viçosa", new LatLng(-20.751637, -42.870514)),
-        DEPARTMENT("Meu departamento", new LatLng(-20.765000, -42.868430));
+        HOMETOWN("Minha casa na cidade natal"),
+        CITY("Minha casa em Viçosa"),
+        DEPARTMENT("Meu departamento");
 
         private final String description;
         private final LatLng locale;
 
-        ViewType(final String description, final LatLng locale) {
+        ViewType(final String description) {
             this.description = description;
-            this.locale = locale;
+
+            final Cursor c = DataBase.getInstance().search(
+                    "Location",
+                    new String[]{"latitude", "longitude"},
+                    "description = '" + this.description + "'",
+                    ""
+            );
+
+            if (c.moveToFirst()) {
+                final double lat = c.getDouble(c.getColumnIndexOrThrow("latitude"));
+                final double lng = c.getDouble(c.getColumnIndexOrThrow("longitude"));
+                this.locale = new LatLng(lat, lng);
+            } else {
+                this.locale = new LatLng(0, 0);
+            }
+
+            c.close();
         }
 
         public String getDescription() {

@@ -17,6 +17,7 @@
         android:required="false" />
 
     <application
+        android:name="com.example.mobile.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -45,6 +46,7 @@
         <activity android:name=".projects.imc.IMCReport" />
         <activity android:name=".projects.geolocation.Geolocation" />
         <activity android:name=".projects.geolocation.GeolocationView" />
+        <activity android:name=".projects.geolocation.GeolocationReport" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
