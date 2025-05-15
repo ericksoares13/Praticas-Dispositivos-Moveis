@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile.R;
@@ -27,8 +28,11 @@ public class GeolocationReport extends Activity {
         this.setContentView(R.layout.geolocation_report);
 
         final ListView listView = this.findViewById(R.id.geolocationListReport);
-        final Map<String, LatLng> logsLocale = this.getLogsLocale();
+        final TextView emptyView = this.findViewById(R.id.emptyView);
 
+        listView.setEmptyView(emptyView);
+
+        final Map<String, LatLng> logsLocale = this.getLogsLocale();
         final String[] items = logsLocale.keySet().toArray(new String[0]);
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
 

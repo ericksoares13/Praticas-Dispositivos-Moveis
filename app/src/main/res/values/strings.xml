@@ -41,4 +41,6 @@
     <string name="text_vicosa">Viçosa</string>
     <string name="text_dpi">DPI</string>
     <string name="text_locale">Localização</string>
+    <string name="text_logs">Meus logs</string>
+    <string name="text_empty_logs">Nenhum log registrado ainda</string>
 </resources>
