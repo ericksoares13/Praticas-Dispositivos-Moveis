@@ -32,6 +32,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Locale;
+
 public class GeolocationView extends AppCompatActivity implements OnMapReadyCallback {
 
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -181,8 +183,15 @@ public class GeolocationView extends AppCompatActivity implements OnMapReadyCall
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
             this.currentMaker = this.googleMap.addMarker(markerOptions);
 
+            final Location vicosaHome = new Location("vicosaHome");
+            vicosaHome.setLatitude(ViewType.CITY.getLocale().latitude);
+            vicosaHome.setLongitude(ViewType.CITY.getLocale().longitude);
+
+            final double distance = this.currentLocation.distanceTo(vicosaHome);
+            final String distanceFormatted = String.format(Locale.forLanguageTag("pt"), "%.2f", distance);
+
             this.googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-            Toast.makeText(this.getBaseContext(), "Localização atual", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getBaseContext(), "Distancia da casa de viçosa: " + distanceFormatted + "m", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this.getBaseContext(), "Localização ainda não disponível", Toast.LENGTH_SHORT).show();
         }
