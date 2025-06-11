@@ -10,6 +10,7 @@ import com.example.mobile.projects.calculator.CompleteCalculator;
 import com.example.mobile.projects.calculator.SimpleCalculator;
 import com.example.mobile.projects.geolocation.Geolocation;
 import com.example.mobile.projects.imc.IMCCalculator;
+import com.example.mobile.projects.sensor.SensorReading;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,9 +25,9 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        this.setContentView(R.layout.activity_main);
 
-        final ExpandableListView expandableListView = findViewById(R.id.expandableListView);
+        final ExpandableListView expandableListView = this.findViewById(R.id.expandableListView);
         expandableListView.setAdapter(this.getSimpleExpandableListAdapterProjects());
         this.manageListClick(expandableListView);
     }
@@ -38,6 +39,7 @@ public class MainActivity extends Activity {
         this.fillWithCalculatorProject(groupList, childList);
         this.fillWithIMCProject(groupList, childList);
         this.fillWithGeolocationProject(groupList, childList);
+        this.fillWithSensorProject(groupList, childList);
 
         return new SimpleExpandableListAdapter(
                 this,
@@ -63,7 +65,7 @@ public class MainActivity extends Activity {
         child1.put(ITEM, "Calculadora Simples");
         children.add(child1);
 
-        final  Map<String, String> child2 = new HashMap<>();
+        final Map<String, String> child2 = new HashMap<>();
         child2.put(ITEM, "Calculadora Completa");
         children.add(child2);
 
@@ -98,19 +100,35 @@ public class MainActivity extends Activity {
         childList.add(children);
     }
 
+    private void fillWithSensorProject(final List<Map<String, String>> groupList, final List<List<Map<String, String>>> childList) {
+        final Map<String, String> group = new HashMap<>();
+        group.put(PRACTICE, "Prática 4");
+        groupList.add(group);
+
+        final List<Map<String, String>> children = new ArrayList<>();
+
+        final Map<String, String> child1 = new HashMap<>();
+        child1.put(ITEM, "Leituras de Sensores");
+        children.add(child1);
+
+        childList.add(children);
+    }
+
     private void manageListClick(final ExpandableListView expandableListView) {
         expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
 
             if (groupPosition == 0) {
                 if (childPosition == 0) {
-                    startActivity(new Intent(MainActivity.this, SimpleCalculator.class));
+                    this.startActivity(new Intent(MainActivity.this, SimpleCalculator.class));
                 } else if (childPosition == 1) {
-                    startActivity(new Intent(MainActivity.this, CompleteCalculator.class));
+                    this.startActivity(new Intent(MainActivity.this, CompleteCalculator.class));
                 }
             } else if (groupPosition == 1 && childPosition == 0) {
-                startActivity(new Intent(MainActivity.this, IMCCalculator.class));
+                this.startActivity(new Intent(MainActivity.this, IMCCalculator.class));
             } else if (groupPosition == 2 && childPosition == 0) {
-                startActivity(new Intent(MainActivity.this, Geolocation.class));
+                this.startActivity(new Intent(MainActivity.this, Geolocation.class));
+            } else if (groupPosition == 3 && childPosition == 0) {
+                this.startActivity(new Intent(MainActivity.this, SensorReading.class));
             }
 
             return true;
