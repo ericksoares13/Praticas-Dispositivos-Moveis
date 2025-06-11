@@ -17,14 +17,11 @@ public class CompleteCalculator extends Activity {
 
     private final Queue<String> number1Integer = new LinkedList<>();
     private final Queue<String> number1Decimal = new LinkedList<>();
-    private boolean number1IsDecimal = false;
-
     private final Queue<String> number2Integer = new LinkedList<>();
     private final Queue<String> number2Decimal = new LinkedList<>();
-    private boolean number2IsDecimal = false;
-
     private final Queue<String> operations = new LinkedList<>();
-
+    private boolean number1IsDecimal = false;
+    private boolean number2IsDecimal = false;
     private boolean isResult = false;
     private boolean isNegativeResult = false;
 
@@ -209,18 +206,13 @@ public class CompleteCalculator extends Activity {
 
         final String operation = this.operations.poll();
 
-        switch (Objects.requireNonNull(operation)) {
-            case "+":
-                return String.valueOf(number1 + number2);
-            case "-":
-                return String.valueOf(number1 - number2);
-            case "*":
-                return String.valueOf(number1 * number2);
-            case "/":
-                return (number2 == 0.0) ? ERROR : String.valueOf(number1 / number2);
-            default:
-                return ERROR;
-        }
+        return switch (Objects.requireNonNull(operation)) {
+            case "+" -> String.valueOf(number1 + number2);
+            case "-" -> String.valueOf(number1 - number2);
+            case "*" -> String.valueOf(number1 * number2);
+            case "/" -> (number2 == 0.0) ? ERROR : String.valueOf(number1 / number2);
+            default -> ERROR;
+        };
     }
 
     private void setNumber1(final String number1) {
@@ -231,8 +223,9 @@ public class CompleteCalculator extends Activity {
             return;
         }
 
-        number1.chars().forEach(c -> {
-            final String actualChar = String.valueOf((char) c);
+        for (int i = 0; i < number1.length(); i++) {
+            final char c = number1.charAt(i);
+            final String actualChar = String.valueOf(c);
 
             if (actualChar.equals("-")) {
                 this.isNegativeResult = true;
@@ -245,7 +238,7 @@ public class CompleteCalculator extends Activity {
                     this.number1Integer.add(actualChar);
                 }
             }
-        });
+        }
     }
 
     public void clickEqual(final View view) {

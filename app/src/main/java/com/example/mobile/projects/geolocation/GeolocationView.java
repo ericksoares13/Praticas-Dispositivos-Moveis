@@ -44,8 +44,13 @@ public class GeolocationView extends AppCompatActivity implements OnMapReadyCall
     private boolean requestingLocationUpdates;
     @SuppressLint("MissingPermission")
     final ActivityResultLauncher<String[]> requestPermissionsLauncher = this.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
-        final Boolean fineGranted = result.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false);
-        final Boolean coarseGranted = result.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false);
+        final Boolean fineGranted = result.containsKey(Manifest.permission.ACCESS_FINE_LOCATION)
+                ? result.get(Manifest.permission.ACCESS_FINE_LOCATION)
+                : Boolean.FALSE;
+
+        final Boolean coarseGranted = result.containsKey(Manifest.permission.ACCESS_COARSE_LOCATION)
+                ? result.get(Manifest.permission.ACCESS_COARSE_LOCATION)
+                : Boolean.FALSE;
 
         if (Boolean.TRUE.equals(fineGranted) || Boolean.TRUE.equals(coarseGranted)) {
             this.requestingLocationUpdates = true;
@@ -72,7 +77,7 @@ public class GeolocationView extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.geolocation_view);
 
-        this.viewType = this.getIntent().getSerializableExtra("view", ViewType.class);
+        this.viewType = (ViewType) this.getIntent().getSerializableExtra("view");
         final SupportMapFragment mapFragment = (SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.map);
 
         if (mapFragment != null) {
