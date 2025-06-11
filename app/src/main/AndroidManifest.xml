@@ -11,9 +11,16 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="false" />
 
     <application
@@ -47,6 +54,7 @@
         <activity android:name=".projects.geolocation.Geolocation" />
         <activity android:name=".projects.geolocation.GeolocationView" />
         <activity android:name=".projects.geolocation.GeolocationReport" />
+        <activity android:name=".projects.sensor.SensorReading" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

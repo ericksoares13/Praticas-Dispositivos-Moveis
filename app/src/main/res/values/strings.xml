@@ -43,4 +43,7 @@
     <string name="text_locale">Localização</string>
     <string name="text_logs">Meus logs</string>
     <string name="text_empty_logs">Nenhum log registrado ainda</string>
+    <string name="text_lantern">Lanterna:</string>
+    <string name="text_vibration">Vibração:</string>
+    <string name="text_classificate_reads">Classificar leituras</string>
 </resources>
