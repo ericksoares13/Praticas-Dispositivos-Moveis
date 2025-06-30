@@ -46,4 +46,15 @@
     <string name="text_lantern">Lanterna:</string>
     <string name="text_vibration">Vibração:</string>
     <string name="text_classificate_reads">Classificar leituras</string>
+    <string name="text_local_name">Nome do local:</string>
+    <string name="text_local_hint">UFV</string>
+    <string name="text_local_category">Categoria do local:</string>
+    <string name="text_global_position">Posicionamento Global</string>
+    <string name="text_latitude">Latitude:</string>
+    <string name="text_longitude">Longitude:</string>
+    <string name="text_check_in">Check-in:</string>
+    <string name="text_menu_map">Mapa de Check-in</string>
+    <string name="text_menu_management">Gestão de Check-in</string>
+    <string name="text_menu_places">Lugares mais visitados</string>
+    <string name="text_loading">carregando...</string>
 </resources>

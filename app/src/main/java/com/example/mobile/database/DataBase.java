@@ -34,9 +34,28 @@ public class DataBase {
                                        id_location INTEGER,
                                        CONSTRAINT fkey_location FOREIGN KEY (id_location) REFERENCES Location(id));
                     """,
+                    """
+                    CREATE TABLE CheckIn (locale TEXT PRIMARY KEY,
+                                          visitsNumber INTEGER NOT NULL,
+                                          cat INTEGER NOT NULL,
+                                          latitude TEXT NOT NULL,
+                                          longitude TEXT NOT NULL,
+                                          CONSTRAINT fkey0 FOREIGN KEY (cat) REFERENCES Category (idCategory));
+                    """,
+                    """
+                    CREATE TABLE Category (idCategory INTEGER PRIMARY KEY AUTOINCREMENT,
+                                            name TEXT NOT NULL);
+                    """,
                     "INSERT INTO Location (description, latitude, longitude) VALUES ('Minha casa na cidade natal', -19.4619317, -42.5872633);",
                     "INSERT INTO Location (description, latitude, longitude) VALUES ('Minha casa em Viçosa', -20.751637, -42.870514);",
                     "INSERT INTO Location (description, latitude, longitude) VALUES ('Meu departamento', -20.765000, -42.868430);",
+                    "INSERT INTO Category (name) VALUES ('Restaurante');",
+                    "INSERT INTO Category (name) VALUES ('Bar');",
+                    "INSERT INTO Category (name) VALUES ('Cinema');",
+                    "INSERT INTO Category (name) VALUES ('Universidade');",
+                    "INSERT INTO Category (name) VALUES ('Estádio');",
+                    "INSERT INTO Category (name) VALUES ('Parque');",
+                    "INSERT INTO Category (name) VALUES ('Outros');",
             };
             for (final String s : scriptDataBaseCreate) {
                 this.db.execSQL(s);

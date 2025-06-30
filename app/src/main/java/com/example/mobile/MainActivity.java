@@ -8,6 +8,7 @@ import android.widget.SimpleExpandableListAdapter;
 
 import com.example.mobile.projects.calculator.CompleteCalculator;
 import com.example.mobile.projects.calculator.SimpleCalculator;
+import com.example.mobile.projects.check_in.Home;
 import com.example.mobile.projects.geolocation.Geolocation;
 import com.example.mobile.projects.imc.IMCCalculator;
 import com.example.mobile.projects.sensor.SensorReading;
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
         this.fillWithIMCProject(groupList, childList);
         this.fillWithGeolocationProject(groupList, childList);
         this.fillWithSensorProject(groupList, childList);
+        this.fillWithCheckInProject(groupList, childList);
 
         return new SimpleExpandableListAdapter(
                 this,
@@ -114,6 +116,20 @@ public class MainActivity extends Activity {
         childList.add(children);
     }
 
+    private void fillWithCheckInProject(final List<Map<String, String>> groupList, final List<List<Map<String, String>>> childList) {
+        final Map<String, String> group = new HashMap<>();
+        group.put(PRACTICE, "Prática 5");
+        groupList.add(group);
+
+        final List<Map<String, String>> children = new ArrayList<>();
+
+        final Map<String, String> child1 = new HashMap<>();
+        child1.put(ITEM, "Check-in Locais");
+        children.add(child1);
+
+        childList.add(children);
+    }
+
     private void manageListClick(final ExpandableListView expandableListView) {
         expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
 
@@ -129,6 +145,8 @@ public class MainActivity extends Activity {
                 this.startActivity(new Intent(MainActivity.this, Geolocation.class));
             } else if (groupPosition == 3 && childPosition == 0) {
                 this.startActivity(new Intent(MainActivity.this, SensorReading.class));
+            } else if (groupPosition == 4 && childPosition == 0) {
+                this.startActivity(new Intent(MainActivity.this, Home.class));
             }
 
             return true;

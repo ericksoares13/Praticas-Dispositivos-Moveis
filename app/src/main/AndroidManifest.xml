@@ -43,7 +43,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -55,6 +54,9 @@
         <activity android:name=".projects.geolocation.GeolocationView" />
         <activity android:name=".projects.geolocation.GeolocationReport" />
         <activity android:name=".projects.sensor.SensorReading" />
+        <activity
+            android:name=".projects.check_in.Home"
+            android:label="Check-In Locais" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
