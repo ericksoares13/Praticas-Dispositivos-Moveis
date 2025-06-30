@@ -1,5 +1,6 @@
 package com.example.mobile.projects.check_in;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +27,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap googleMap;
     private LatLng latLng;
-
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         if (id == R.id.action_back) {
             this.finish();
         } else if (id == R.id.action_management) {
-            // TODO: this.startActivity(new Intent(Home.this, ));
+            this.startActivity(new Intent(Map.this, Management.class));
         } else if (id == R.id.action_places) {
             // TODO: this.startActivity(new Intent(Home.this, ));
         } else if (id == R.id.action_normal_map) {
