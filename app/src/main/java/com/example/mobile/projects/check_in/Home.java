@@ -163,11 +163,23 @@ public class Home extends AppCompatActivity {
         final int id = item.getItemId();
 
         if (id == R.id.action_map) {
-            //this.startActivity(new Intent(Home.this, ));
-        } else if (id == R.id.action_map) {
-            //this.startActivity(new Intent(Home.this, ));
-        } else if (id == R.id.action_map) {
-            //this.startActivity(new Intent(Home.this, ));
+            final String latitude = ((TextView) this.findViewById(R.id.latitudeText)).getText().toString();
+            final String longitude = ((TextView) this.findViewById(R.id.longitudeText)).getText().toString();
+
+            if (latitude.equals("carregando...") || longitude.equals("carregando...")) {
+                Toast.makeText(this.getBaseContext(), "Espere a localização carregar", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            final Intent it = new Intent(Home.this, Map.class);
+            it.putExtra("latitude", latitude);
+            it.putExtra("longitude", longitude);
+
+            this.startActivity(it);
+        } else if (id == R.id.action_management) {
+            // TODO: this.startActivity(new Intent(Home.this, ));
+        } else if (id == R.id.action_places) {
+            // TODO: this.startActivity(new Intent(Home.this, ));
         }
 
         return true;
@@ -268,7 +280,7 @@ public class Home extends AppCompatActivity {
         values.put("visitsNumber", visitsNumber);
 
         if (update) {
-            DataBase.getInstance().update("CheckIn", values, null);
+            DataBase.getInstance().update("CheckIn", values, "locale = \"" + locale + "\"");
             return;
         }
 
@@ -280,7 +292,7 @@ public class Home extends AppCompatActivity {
         DataBase.getInstance().insert("CheckIn", values);
     }
 
-    private record Category(int id, String name) {
+    record Category(int id, String name) {
         @NonNull
         @Override
         public String toString() {
@@ -288,8 +300,8 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private record CheckIn(String locale, int visitsNumber, int categoryId, String latitude,
-                           String longitude) {
+    record CheckIn(String locale, int visitsNumber, int categoryId, String latitude,
+                   String longitude) {
         @NonNull
         @Override
         public String toString() {

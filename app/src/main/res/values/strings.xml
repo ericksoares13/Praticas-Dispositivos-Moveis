@@ -53,8 +53,12 @@
     <string name="text_latitude">Latitude:</string>
     <string name="text_longitude">Longitude:</string>
     <string name="text_check_in">Check-in:</string>
-    <string name="text_menu_map">Mapa de Check-in</string>
-    <string name="text_menu_management">Gestão de Check-in</string>
+    <string name="text_menu_map">Mapa de check-in</string>
+    <string name="text_menu_management">Gestão de check-in</string>
     <string name="text_menu_places">Lugares mais visitados</string>
+    <string name="text_menu_back">Voltar</string>
+    <string name="text_menu_map_type">Tipos de mapa</string>
+    <string name="text_menu_normal_map">Mapa normal</string>
+    <string name="text_menu_hybrid_map">Mapa híbrido</string>
     <string name="text_loading">carregando...</string>
 </resources>

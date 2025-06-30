@@ -57,6 +57,9 @@
         <activity
             android:name=".projects.check_in.Home"
             android:label="Check-In Locais" />
+        <activity
+            android:name=".projects.check_in.Map"
+            android:label="Mapa Check-in" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
