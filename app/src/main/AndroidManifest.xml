@@ -63,6 +63,9 @@
         <activity
             android:name=".projects.check_in.Management"
             android:label="Gestão de Check-in" />
+        <activity
+            android:name=".projects.check_in.Report"
+            android:label="Relatório" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

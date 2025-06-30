@@ -49,6 +49,7 @@
     <string name="text_local_name">Nome do local:</string>
     <string name="text_local">Local:</string>
     <string name="text_delete">Excluir?</string>
+    <string name="text_visits">Visitas:</string>
     <string name="text_local_hint">UFV</string>
     <string name="text_local_category">Categoria do local:</string>
     <string name="text_global_position">Posicionamento Global</string>

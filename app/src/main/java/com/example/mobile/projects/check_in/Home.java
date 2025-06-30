@@ -179,7 +179,7 @@ public class Home extends AppCompatActivity {
         } else if (id == R.id.action_management) {
             this.startActivity(new Intent(Home.this, Management.class));
         } else if (id == R.id.action_places) {
-            // TODO: this.startActivity(new Intent(Home.this, ));
+            this.startActivity(new Intent(Home.this, Report.class));
         }
 
         return true;

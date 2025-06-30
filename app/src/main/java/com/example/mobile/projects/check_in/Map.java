@@ -62,7 +62,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         } else if (id == R.id.action_management) {
             this.startActivity(new Intent(Map.this, Management.class));
         } else if (id == R.id.action_places) {
-            // TODO: this.startActivity(new Intent(Home.this, ));
+            this.startActivity(new Intent(Map.this, Report.class));
         } else if (id == R.id.action_normal_map) {
             this.googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         } else if (id == R.id.action_hybrid_map) {
